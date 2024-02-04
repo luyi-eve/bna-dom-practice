@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <title>Simple DOM example - Eve</title>
+    <style>
+      .highlight {
+        color: white;
+        background-color: black;
+        padding: 10px;
+        width: 250px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <img
+        src="dinosaur.png"
+        alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth." />
+      <p>
+        Here we will add a link to the
+        <a href="https://www.mozilla.org/">Mozilla homepage</a>
+      </p>
+    </section>
+
+    <script>
+      const link = document.querySelector("a"); //This line selects the first <a> element in the document using the querySelector() method. The selected element is stored in the "link" variable.
+      link.textContent = "Mozilla Developer Network"; //This line sets the text content of the <a> element to "Mozilla Developer Network"
+      link.href = "https://developer.mozilla.org"; //This line sets the href attribute of the <a> element to "https://developer.mozilla.org".
+
+      const sect = document.querySelector("section");//This line selects the first <section> element in the document and stores it in the "sect" variable.
+      const para = document.createElement("p");//This line creates a new <p> element, using the createElement() method and stores it in the "para" variable.
+      para.textContent = "We hope you enjoyed the ride.";//This line sets the text content of the the newly created <p> element to "We hope you enjoyed the ride.".
+      sect.appendChild(para);//This line appends the newly created <p> element as a child of the <section> element, effectively adding it to the end of the section.
+      
+      const text = document.createTextNode( //This line creates a new text node containing the specified text.
+                                            //A text node is a type of DOM node that represents text within an HTML document. 
+                                            //It does not have any children and is used to store and display text content.
+        " — the premier source for web development knowledge.",
+      );
+
+      const linkPara = document.querySelector("p");//This line selects the first <p> element in the document and stores it in the "linkPara" variable
+      linkPara.appendChild(text);//This line appends the newly created text node as a child of the "linkPara" <p> element, effectively adding it to the end of the paragraph.
+
+      sect.appendChild(linkPara);//This line appends the "linkPara" <p> element (which now contains both the original text and the appended text node) as a child of <section> element
+      linkPara.parentNode.removeChild(linkPara);//Find the parent node (<section> element) of the <p> element (linkPara), and remove the <p> element from it.
+
+      para.setAttribute("class", "highlight");//This line sets the class attribute of the <p> element to "highlight", which can be used for styling purposes.
+      
+    </script>
+
+
+
+  </body>
+</html>
